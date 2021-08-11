@@ -31,7 +31,7 @@ header {
 .header-block {
     position: absolute;
     top: 20px;
-    z-index: 100;
+    z-index: 101;
     width: 100%;
 }
 .header-container {
@@ -52,7 +52,7 @@ header {
     text-decoration: none;
     margin-right: 40px;
 }
-.header-container .contacts .tel {
+.header-container .contacts .tel, .mobile-menu .contacts .tel {
     margin-right: 20px;
     font-weight: 600;
     font-size: 14px;
@@ -60,7 +60,7 @@ header {
     color: #2D2D2D;
     text-decoration: none;
 }
-.header-container .contacts .contact {
+.header-container .contacts .contact, .mobile-menu .contacts .contact {
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
@@ -132,6 +132,53 @@ header {
 }
 .owl-dots button.active  span {
     background: #00A8D0!important;
+}
+.navbar-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background: url(img/navbar-toggle.svg);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 101;
+}
+.navbar-toggle.active {
+    background: url(img/navbar-close.svg) no-repeat;
+    background-size: 100%;
+}
+.mobile-menu {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+    overflow-y: hidden;
+    top: 0;
+    z-index: 100;
+}
+.mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mobile-menu .navbar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.mobile-menu .navbar a {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 17px;
+    color: #2D2D2D;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.mobile-menu .contacts {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
 }
 .about {
     width: 510px;
@@ -742,6 +789,9 @@ footer .social-links-item a img {
     color: #A8A7A7;
 }
 @media (max-width:1200px) {
+    .header-container .logo img {
+        width: 150px;
+    }
     .container {
         padding: 0 10px;
     }
@@ -751,10 +801,10 @@ footer .social-links-item a img {
         flex-wrap: wrap;
     } 
     header {
-        height: 400px;
+        height: max-content;
     }
     .about, .about-img, .design-description-box {
-        margin-top: 0;
+        margin-top: 40px;
         margin-bottom: 0;
     }
     .design-section, .production-section, .exclusive-section, .form-section, 
@@ -773,14 +823,14 @@ footer .social-links-item a img {
     .form-section .form-group, .about-img{
         flex-wrap: wrap;
     }
-    .about-scale-block, .design-scale-box {
+    .about-scale-block .design-scale, .design-scale-box .design-scale {
         display: none;
     }
     .exclusive-item:last-child {
         margin-bottom: 55px;
     }
-    .design-scale-box img, .design-scale-box img, .header-title img {
-        width: 100%!important;
+    .design-scale-box img, .header-title img {
+        width: 100%;
     }
     .about span, .design-description span, .exclusive-header, .production-section span, 
     .form-section form span, .more-info span , .faq-header{
@@ -821,6 +871,9 @@ footer .social-links-item a img {
     .design-slogan {
         margin: 20px 0;
     }
+    .design-slogan span:before {
+        top: -20px;
+    }
     .partners-box {
         padding: 0;
     }
@@ -843,5 +896,38 @@ footer .social-links-item a img {
     }
     footer .social-links-item {
         margin-bottom: 20px;
+    }
+}
+@media (max-width: 991px) {
+    .header-container .navbar , .header-container .contacts {
+        display: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    .header-container .logo img {
+        width: 80px;
+    }
+    .header-title-img {
+        width: 200px!important;
+    }
+    .header-title {
+        top: 50%;
+    }
+    .owl-nav button {
+        display: none!important;
+    }
+    .owl-carousel .owl-dots {
+        bottom: 10px
+    }
+    .mobile-menu {
+        height: calc(100% + 195px);
+    }
+}
+@media (max-width: 480px) {
+    .header-title p {
+        margin: 0;
     }
 }
